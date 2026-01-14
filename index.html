@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aventura Nevado: Expertos en turismo de alta montaña, trekking y expediciones en la Sierra Nevada. Vive la experiencia de tu vida con seguridad y guías expertos.">
+    <title>Aventura Nevado | Expediciones y Turismo de Montaña</title>
+    <style>
+        /* --- PALETA DE COLORES BASADA EN TU LOGO --- */
+        :root {
+            --color-primary-blue: #204E78; /* Azul del texto 'NEVADO' */
+            --color-accent-green: #8CC63F; /* Verde claro del fondo/borde */
+            --color-dark-green: #2E5A27;   /* Verde oscuro de la montaña */
+            --color-rock-brown: #6D4C41;   /* Marrón de las rocas */
+            --color-white: #ffffff;
+            --color-light-gray: #f4f4f4;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-main); color: #333; line-height: 1.6; }
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
+        
+        /* Botones Optimizados para Clics */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: var(--color-primary-blue);
+            color: var(--color-white);
+            border: 2px solid var(--color-primary-blue);
+        }
+        .btn-primary:hover {
+            background-color: var(--color-dark-green);
+            border-color: var(--color-dark-green);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: var(--color-accent-green);
+            color: var(--color-primary-blue);
+        }
+        .btn-secondary:hover {
+            filter: brightness(0.9);
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--color-white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-primary-blue);
+        }
+        .logo-img {
+            height: 60px; /* Ajusta según tu archivo real */
+            margin-right: 10px;
+        }
+        nav ul { display: flex; gap: 20px; }
+        nav a { color: var(--color-primary-blue); font-weight: 600; }
+        nav a:hover { color: var(--color-accent-green); }
+
+        /* --- HERO SECTION (Portada) --- */
+        .hero {
+            background: linear-gradient(rgba(32, 78, 120, 0.7), rgba(46, 90, 39, 0.6)), url('https://source.unsplash.com/1600x900/?mountain,snow,hiker');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BENEFICIOS (Iconos) --- */
+        .benefits {
+            padding: 80px 5%;
+            background-color: var(--color-white);
+            text-align: center;
+        }
+        .benefits h2 { color: var(--color-primary-blue); margin-bottom: 50px; font-size: 2.5rem; }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .benefit-card i {
+            font-size: 3rem;
+            color: var(--color-accent-green);
+            margin-bottom: 20px;
+        }
+        .benefit-card h3 { margin-bottom: 15px; color: var(--color-dark-green); }
+
+        /* --- PLANES / PAQUETES --- */
+        .packages {
+            padding: 80px 5%;
+            background-color: var(--color-light-gray);
+        }
+        .section-title {
+            text-align: center;
+            color: var(--color-primary-blue);
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+        }
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            position: relative;
+        }
+        .package-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card-header {
+            background-color: var(--color-primary-blue);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-body { padding: 30px; text-align: center; }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-dark-green);
+            display: block;
+            margin: 20px 0;
+        }
+        .features li { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        
+        /* Etiqueta 'Popular' */
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--color-accent-green);
+            color: var(--color-primary-blue);
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-bottom-left-radius: 10px;
+        }
+
+        /* --- CTA FINAL --- */
+        .cta-section {
+            background: var(--color-dark-green);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .cta-section h2 { margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--color-primary-blue);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Aquí iría un menú hamburguesa en versión completa */
+            header { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo Aventura Nevado" class="logo-img">
+            <span>AVENTURA NEVADO</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#planes">Paquetes</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto" class="btn btn-secondary" style="padding: 8px 20px;">Reservar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div>
+            <h1>Conquista la Cima.<br>Vive la Leyenda.</h1>
+            <p>Expertos en montañismo y senderismo en la Sierra Nevada. Tu seguridad es nuestra prioridad, la aventura es tu recompensa.</p>
+            <a href="#planes" class="btn btn-secondary">Ver Expediciones</a>
+        </div>
+    </section>
+
+    <section class="benefits" id="nosotros">
+        <h2>¿Por qué viajar con Aventura Nevado?</h2>
+        <div class="grid-3">
+            <div class="benefit-card">
+                <i>🏔️</i>
+                <h3>Guías Certificados</h3>
+                <p>Nuestros guías son locales expertos con años de experiencia en alta montaña y primeros auxilios.</p>
+            </div>
+            <div class="benefit-card">
+                <i>🛡️</i>
+                <h3>Seguridad Primero</h3>
+                <p>Equipos homologados y protocolos estrictos para garantizar que tu única preocupación sea disfrutar.</p>
+            </div>
+            <div class="benefit-card">
+                <i>🌿</i>
+                <h3>Turismo Sostenible</h3>
+                <p>Amamos la montaña. Practicamos turismo responsable "No Deje Rastro" para conservar nuestros nevados.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="packages" id="planes">
+        <h2 class="section-title">Elige tu Próximo Desafío</h2>
+        <div class="grid-3">
+            
+            <div class="package-card">
+                <div class="card-header">
+                    <h3>Senderismo Básico</h3>
+                </div>
+                <div class="card-body">
+                    <p>Ideal para principiantes y familias.</p>
+                    <span class="price">$150.000 COP</span>
+                    <ul class="features">
+                        <li>1 Día de recorrido</li>
+                        <li>Almuerzo incluido</li>
+                        <li>Seguro médico</li>
+                        <li>Guía local</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <div class="popular-tag">MÁS VENDIDO</div>
+                <div class="card-header" style="background-color: var(--color-dark-green);">
+                    <h3>Borde de Nieve</h3>
+                </div>
+                <div class="card-body">
+                    <p>La experiencia clásica de montaña.</p>
+                    <span class="price">$450.000 COP</span>
+                    <ul class="features">
+                        <li>2 Días / 1 Noche</li>
+                        <li>Hospedaje en cabaña</li>
+                        <li>Equipo de nieve incluido</li>
+                        <li>Alimentación completa</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary">Reservar Ahora</a>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <div class="card-header">
+                    <h3>Cumbre Total</h3>
+                </div>
+                <div class="card-body">
+                    <p>Para aventureros exigentes.</p>
+                    <span class="price">$850.000 COP</span>
+                    <ul class="features">
+                        <li>3 Días de expedición</li>
+                        <li>Ascenso a picos técnicos</li>
+                        <li>Carpas de alta montaña</li>
+                        <li>Video de recuerdo</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary">Reservar Ahora</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <h2>¿Listo para la aventura de tu vida?</h2>
+        <p style="margin-bottom: 30px;">Los cupos son limitados por temporada. Asegura tu lugar hoy mismo.</p>
+        <a href="https://wa.me/573134496053" class="btn btn-secondary">Escribir al WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Aventura Nevado. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8rem; color: #ccc; margin-top: 10px;">Turismo de naturaleza y aventura.</p>
+    </footer>
+
+</body>
+</html>
