@@ -142,15 +142,30 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: 0.3s;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .package-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .package-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
         .card-header {
             background-color: var(--color-primary-blue);
             color: white;
             padding: 20px;
             text-align: center;
         }
-        .card-body { padding: 30px; text-align: center; }
+        .card-body { 
+            padding: 30px;
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-body .btn {
+            margin-top: auto;
+        }
         .price {
             font-size: 2rem;
             font-weight: bold;
@@ -257,9 +272,9 @@
                 </div>
                 <div class="card-body">
                     
-                    <p>Aventureros, caminantes y amantes de la nieve.</p>
+                    <p style="font-size: 0.9em; margin-bottom: 10px;">Aventureros, caminantes y amantes de la nieve.</p>
                     <span class="price">$650.000 COP</span>
-                    <ul class="features"> conquistando las cumbres más imponentes de Colombia. Prepara tu cuerpo, desa
+                    <ul class="features"> 
                         <li>Aclimatación</li>
                         <li>Senderismo al Nevado</li>
                         <li>tarde de Aguas termales</li>
@@ -278,7 +293,7 @@
                     <h3>Ruta Cometa</h3>
                 </div>
                 <div class="card-body">
-                    <p>Ciclistas, deportistas y grupos de amigos jóvenes.</p>
+                    <p style="font-size: 0.9em; margin-bottom: 10px;">Ciclistas, deportistas y grupos de amigos jóvenes.</p>
                     <span class="price">$580.000 COP</span>
                     <ul class="features">
                         <li>2 Días / 1 Noche</li>
@@ -298,12 +313,14 @@
                     <h3>Eclipse Andino</h3>
                 </div>
                 <div class="card-body">
-                    <p>Parejas, familias o personas buscando desconexión total.</p>
+                    <p style="font-size: 0.9em; margin-bottom: 10px;">Parejas, familias o personas buscando desconexión total.</p>
                     <span class="price">$450.000 COP</span>
                     <ul class="features">
                         <li>Cabalgata al peñon</li>
                         <li>senderismo a monserrate</li>
                         <li>campamento en la hacienda sanjuan</li>
+                        <li>alimentación</li>
+                        <li>transporte</li>
                         <li>Video de recuerdo</li>
                     </ul>
                     <a href="#contacto" class="btn btn-primary">Reservar Ahora</a>
@@ -316,7 +333,7 @@
                     <h3>Nebulosa Mística</h3>
                 </div>
                 <div class="card-body">
-                    <p>Mochileros y exploradores de fin de semana largo (3 días).</p>
+                    <p style="font-size: 0.9em; margin-bottom: 10px;">Mochileros y exploradores de fin de semana largo (3 días).</p>
                     <span class="price">$820.000 COP</span>
                     <ul class="features">
                         <li>3 Días de expedición</li>
