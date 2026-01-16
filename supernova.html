@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedición Supernova - Aventura Nevado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para la página de detalles */
+        .detail-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* 2 partes info, 1 parte cotizador */
+            gap: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilos del Cotizador */
+        .booking-sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .price-tag {
+            font-size: 2em;
+            color: var(--color-dark-green, #2c5e2e); /* Usa tu color verde */
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .calculator-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .total-price {
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .detail-container { grid-template-columns: 1fr; }
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav style="padding: 20px;">
+        <a href="index.html" class="btn btn-primary" style="text-decoration: none;">⬅ Volver al inicio</a>
+    </nav>
+
+        <div class="package-info">
+            <h1>Expedición Supernova</h1>
+            <p class="subtitle">Aventureros, caminantes y amantes de la nieve.</p>
+            
+            <div class="gallery">
+                <img src="pulpito.jpg" alt="Vista del nevado">
+                <img src="laguna.jpg" alt="Laguna">
+                <img src="grupo.jpg" alt="Senderismo">
+                <img src="vale.jpg" alt="Refugio">
+                <img src="ritakuwa.jpg" alt="ritakuwa">
+            </div>
+
+            <h3>Detalles de la experiencia</h3>
+            <p>Esta es la experiencia definitiva para quienes buscan conquistar las cumbres. Incluye aclimatación profesional, guías certificados y todo el equipo necesario.</p>
+            
+            <ul>
+                <li><strong>Duración:</strong> 3 Días</li>
+                <li><strong>Dificultad:</strong> Alta</li>
+                <li><strong>Incluye:</strong> Alimentación completa, hospedaje, seguros.</li>
+            </ul>
+        </div>
+
+        <div class="booking-sidebar">
+            <h3>Reserva tu cupo</h3>
+            <span class="price-tag">$650.000 <small>/pers</small></span>
+
+            <div class="calculator-box">
+                <label for="people">¿Cuántas personas viajan?</label>
+                <select id="people" onchange="calcularTotal()">
+                    <option value="1">1 Persona</option>
+                    <option value="2">2 Personas</option>
+                    <option value="3">3 Personas</option>
+                    <option value="4">4 Personas</option>
+                    <option value="5">5 Personas</option>
+                </select>
+
+                <div class="total-price">
+                    Total a pagar: <br>
+                    <strong id="totalDisplay">$650.000 COP</strong>
+                </div>
+            </div>
+
+            <a href="https://wa.me/573134496053?text=Hola,%20quiero%20reservar%20Supernova" class="btn btn-whatsapp" style="width:100%; display:block; text-align:center; margin-top:15px;">Confirmar por WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN DEL PRECIO (Cambia esto para cada archivo de paquete)
+        const precioPorPersona = 650000; 
+
+        function calcularTotal() {
+            // 1. Obtener la cantidad seleccionada
+            const select = document.getElementById('people');
+            const cantidad = parseInt(select.value);
+
+            // 2. Calcular
+            const total = precioPorPersona * cantidad;
+
+            // 3. Formatear a pesos (pone los puntitos de mil)
+            const totalFormateado = total.toLocaleString('es-CO');
+
+            // 4. Mostrar en pantalla
+            document.getElementById('totalDisplay').innerText = '$' + totalFormateado + ' COP';
+        }
+    </script>
+</body>
+</html>
