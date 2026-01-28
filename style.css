@@ -215,3 +215,54 @@
         .btn-whatsapp:hover {
             background-color: #128C7E; /* Verde más oscuro al pasar el mouse */
         }
+
+        /* Estilos para la sección de Detalles */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background: #f8f9fa; /* Fondo gris muy suave */
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detail-item .icon {
+    font-size: 2em; /* Iconos grandes */
+    background: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.detail-item strong {
+    display: block;
+    color: #333;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-item p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+/* Para celulares: que se pongan uno debajo del otro */
+@media (max-width: 600px) {
+    .details-grid {
+        grid-template-columns: 1fr; 
+    }
+}

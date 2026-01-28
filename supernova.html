@@ -101,16 +101,41 @@
                 <img src="grupo.jpg" alt="Senderismo">
                 <img src="vale.jpg" alt="Refugio">
                 <img src="ritakuwa.jpg" alt="ritakuwa">
+                <img src="zamyrvalbuena.jpg" alt="yotas">
             </div>
 
-            <h3>Detalles de la experiencia</h3>
-            <p>Esta es la experiencia definitiva para quienes buscan conquistar las cumbres. Incluye aclimatación profesional, guías certificados y todo el equipo necesario.</p>
-            
-            <ul>
-                <li><strong>Duración:</strong> 3 Días</li>
-                <li><strong>Dificultad:</strong> Alta</li>
-                <li><strong>Incluye:</strong> Alimentación completa, hospedaje, seguros.</li>
-            </ul>
+            <div class="details-grid">
+    <div class="detail-item">
+        <span class="icon">⏳</span>
+        <div>
+            <strong>Duración</strong>
+            <p>3 Días / 2 Noches</p>
+        </div>
+    </div>
+    
+    <div class="detail-item">
+        <span class="icon">⚡</span>
+        <div>
+            <strong>Nivel</strong>
+            <p>Dificultad Alta</p>
+        </div>
+    </div>
+
+    <div class="detail-item">
+        <span class="icon">🍽️</span>
+        <div>
+            <strong>Incluye</strong>
+            <p>Comidas, Hospedaje, Seguros, Guia, transporte, entradas</p>
+        </div>
+    </div>
+</div>
+
+<hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+
+<h3>Lo que vivirás</h3>
+<p style="line-height: 1.6; color: #555;">
+    Siente la energía del cosmos conquistando las cumbres más imponentes de Colombia. Prepara tu cuerpo, desafía la gravedad en el Púlpito del Diablo y recompensa tu esfuerzo sumergiéndote en aguas termales bajo las estrellas. Una experiencia explosiva para tus sentidos.
+</p>
         </div>
 
         <div class="booking-sidebar">
@@ -139,21 +164,33 @@
 
     <script>
         // CONFIGURACIÓN DEL PRECIO (Cambia esto para cada archivo de paquete)
-        const precioPorPersona = 650000; 
-
         function calcularTotal() {
-            // 1. Obtener la cantidad seleccionada
-            const select = document.getElementById('people');
-            const cantidad = parseInt(select.value);
+    // 1. Obtener la cantidad seleccionada
+    const select = document.getElementById('people');
+    const cantidad = parseInt(select.value);
 
-            // 2. Calcular
-            const total = precioPorPersona * cantidad;
+    // 2. NUEVO: Definir el precio según la cantidad
+    let precioPorPersona; // Usamos 'let' porque el valor va a cambiar
 
-            // 3. Formatear a pesos (pone los puntitos de mil)
-            const totalFormateado = total.toLocaleString('es-CO');
+    if (cantidad === 1) {
+        precioPorPersona = 650000; // Precio base (sin descuento)
+    } else if (cantidad >= 2 && cantidad <= 4) {
+        precioPorPersona = 620000; // Descuento para grupos pequeños
+    } else if (cantidad >= 5) {
+        precioPorPersona = 580000; // Mayor descuento para grupos grandes
+    } else {
+        // Fallback por si acaso (ej. si cantidad es 0)
+        precioPorPersona = 650000; 
+    }
 
-            // 4. Mostrar en pantalla
-            document.getElementById('totalDisplay').innerText = '$' + totalFormateado + ' COP';
+    // 3. Calcular
+    const total = precioPorPersona * cantidad;
+
+    // 4. Formatear a pesos
+    const totalFormateado = total.toLocaleString('es-CO');
+
+    // 5. Mostrar en pantalla
+    document.getElementById('totalDisplay').innerText = '$' + totalFormateado + ' COP';
         }
     </script>
 </body>
